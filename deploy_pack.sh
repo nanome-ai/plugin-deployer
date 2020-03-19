@@ -17,7 +17,7 @@ $0 [options]
     -a <address> or --address <address>
         NTS address plugins connect to
 
-    -p <port> or -- port <port>
+    -p <port> or --port <port>
         NTS port plugins connect to
 
     -d <directory> or --directory <directory>
