@@ -17,7 +17,7 @@ $0 [options]
     -a <address> or --address <address>
         NTS address plugins connect to
 
-    -p <port> or --port <port>
+    -p <port> or -- port <port>
         NTS port plugins connect to
 
     -d <directory> or --directory <directory>
@@ -25,6 +25,8 @@ $0 [options]
 
 EOM
 }
+
+echo -e "Nanome Plugin Deployer"
 
 if [ $# -eq 0 ]; then
     interactive=1
@@ -61,6 +63,7 @@ while [ $# -gt 0 ]; do
 done
 
 if [ $interactive == 1 ]; then
+    echo ""
     args=()
     read -p "Plugin directory?  (plugins): " directory
     directory=${directory:-"plugins"}
@@ -83,23 +86,26 @@ ld=`pwd`
 cd ..
 
 cd $directory
-for plugin in "${plugins[@]}"; do
+for plugin in "${plugins[@]}"; do (
+    echo -e "\n$plugin"
     if [ ! -d "$plugin" ]; then
-        echo "cloning $plugin..."
+        echo -n "  cloning... "
         git clone -q "$github_url$plugin"
+        echo "done"
     fi
-done
 
-for plugin in plugin-*; do (
     cd $plugin
-    echo "pulling $plugin..."
+    echo -n "  pulling... "
     git pull -q
+    echo "done"
     cd docker
-    echo "building $plugin..."
-    ./build.sh 1>> "$ld/$plugin.log"
-    echo "deploying $plugin..."
+    echo -n "  building... "
+    ./build.sh -u 1>> "$ld/$plugin.log"
+    echo "done"
+    echo -n "  deploying... "
     ./deploy.sh "${args[@]}" 1>> "$ld/$plugin.log"
+    echo "done"
 ); done
 
-echo "done"
+echo -e "\ndone"
 echo "logs: $ld"
