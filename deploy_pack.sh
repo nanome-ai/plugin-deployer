@@ -3,7 +3,7 @@
 directory="plugins"
 interactive=0
 args=()
-plugins=("plugin-vault" "plugin-realtime-scoring" "plugin-rmsd" "plugin-chemical-properties" "plugin-docking" "plugin-molecular-dynamics")
+plugins=("plugin-structure-prep" "plugin-vault" "plugin-realtime-scoring" "plugin-rmsd" "plugin-chemical-properties" "plugin-docking" "plugin-molecular-dynamics")
 github_url="https://github.com/nanome-ai/"
 
 usage() {
