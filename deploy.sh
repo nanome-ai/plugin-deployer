@@ -3,7 +3,14 @@
 directory="plugins"
 interactive=0
 args=()
-plugins=("plugin-structure-prep" "plugin-vault" "plugin-realtime-scoring" "plugin-rmsd" "plugin-chemical-properties" "plugin-docking" "plugin-molecular-dynamics")
+plugins=(
+    "plugin-chemical-properties"
+    "plugin-docking"
+    "plugin-realtime-scoring"
+    "plugin-rmsd"
+    "plugin-structure-prep"
+    "plugin-vault"
+)
 github_url="https://github.com/nanome-ai/"
 
 usage() {
@@ -81,9 +88,7 @@ if [ ! -d "$directory" ]; then
 fi
 
 mkdir -p logs
-cd logs
-ld=`pwd`
-cd ..
+logs=`(cd logs; pwd)`
 
 cd $directory
 for plugin in "${plugins[@]}"; do (
@@ -100,12 +105,11 @@ for plugin in "${plugins[@]}"; do (
     echo "done"
     cd docker
     echo -n "  building... "
-    ./build.sh -u 1>> "$ld/$plugin.log"
+    ./build.sh -u 1>> "$logs/$plugin.log"
     echo "done"
     echo -n "  deploying... "
-    ./deploy.sh "${args[@]}" 1>> "$ld/$plugin.log"
+    ./deploy.sh "${args[@]}" 1>> "$logs/$plugin.log"
     echo "done"
 ); done
 
 echo -e "\ndone"
-echo "logs: $ld"
