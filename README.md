@@ -1,4 +1,4 @@
-# plugin-starter-pack-autodeploy
+# Auto Deploy the Nanome Plugin Starter Pack
 A quick script to deploy the Nanome plugin starter pack
 
 ## Nanome Plugin Starter Pack Deployment Instructions
