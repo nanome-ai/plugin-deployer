@@ -46,8 +46,10 @@ sudo service docker start
 ```sh
 git clone https://github.com/nanome-ai/plugin-deployer
 cd plugin-deployer
-./deploy.sh -a <NTS IP>
+./deploy.sh -a <NTS IP> --plugin plugin-vault -w 8080 -u <HOST IP>:8080
 ```
+
+NOTE: to add arguments specific to a plugin, append any number of `--plugin <plugin-name> [args]` to the `./deploy.sh` command.
 
 ### Step 4: Docker Container Health Check
 

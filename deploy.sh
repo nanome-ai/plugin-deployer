@@ -11,6 +11,7 @@ plugins=(
     "plugin-structure-prep"
     "plugin-vault"
 )
+plugin_args=()
 github_url="https://github.com/nanome-ai/"
 
 usage() {
@@ -19,7 +20,7 @@ usage() {
 $0 [options]
 
     -i or --interactive
-        Start interactive mode
+        Interactive mode
 
     -a <address> or --address <address>
         NTS address plugins connect to
@@ -30,7 +31,33 @@ $0 [options]
     -d <directory> or --directory <directory>
         Directory containing plugins
 
+    --plugin <plugin-name> [args]
+        Additional args for a specific plugin
+
 EOM
+}
+
+plugin_index=0
+get_plugin_index() {
+    for i in "${!plugins[@]}"; do
+        if [ "$1" == "${plugins[$i]}" ]; then
+            plugin_index=$i
+        fi
+    done
+}
+
+parse_plugin_args() {
+    while [ "$1" == "--plugin" ]; do
+        shift
+        plugin_name="$1"
+        shift
+        get_plugin_index $plugin_name
+        plugin_args[$plugin_index]=""
+        while [ $# -gt 0 ] && [ "$1" != "--plugin" ]; do
+            plugin_args[$plugin_index]+="$1 "
+            shift
+        done
+    done
 }
 
 echo -e "Nanome Plugin Deployer"
@@ -57,6 +84,10 @@ while [ $# -gt 0 ]; do
         -d | --directory )
             shift
             directory=$1
+            ;;
+        --plugin )
+            parse_plugin_args $*
+            break
             ;;
         -h | --help )
             usage
@@ -107,6 +138,11 @@ for plugin in "${plugins[@]}"; do (
     echo -n "  building... "
     ./build.sh -u 1>> "$logs/$plugin.log"
     echo "done"
+
+    get_plugin_index $plugin
+    arg_string="${args[@]} ${plugin_args[$plugin_index]}"
+    read -ra args <<< "$arg_string"
+
     echo -n "  deploying... "
     ./deploy.sh "${args[@]}" 1>> "$logs/$plugin.log"
     echo "done"
