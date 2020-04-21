@@ -4,15 +4,15 @@ directory="plugins"
 interactive=0
 args=()
 plugins=(
-    "plugin-chemical-properties"
-    "plugin-docking"
-    "plugin-realtime-scoring"
-    "plugin-rmsd"
-    "plugin-structure-prep"
-    "plugin-vault"
+    "chemical-properties"
+    "docking"
+    "realtime-scoring"
+    "rmsd"
+    "structure-prep"
+    "vault"
 )
 plugin_args=()
-github_url="https://github.com/nanome-ai/"
+github_url="https://github.com/nanome-ai/plugin-"
 
 usage() {
     cat <<EOM
@@ -60,7 +60,7 @@ parse_plugin_args() {
     done
 }
 
-echo -e "Nanome Plugin Deployer"
+echo -e "Nanome Starter Stack Deployer"
 
 if [ $# -eq 0 ]; then
     interactive=1
@@ -126,7 +126,7 @@ for plugin in "${plugins[@]}"; do (
     echo -e "\n$plugin"
     if [ ! -d "$plugin" ]; then
         echo -n "  cloning... "
-        git clone -q "$github_url$plugin"
+        git clone -q "$github_url$plugin" $plugin
         echo "done"
     fi
 

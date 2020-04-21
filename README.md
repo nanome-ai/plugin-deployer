@@ -1,12 +1,12 @@
 # Auto Deploy the Nanome Starter Stack
 
-A quick script to deploy the  Nanome Starter Stack
+A quick script to deploy the Nanome Starter Stack
 
 ## Nanome Starter Stack Deployment Instructions
 
-In order to successfully complete the deployment of Nanome’s starter stack group of plugins, you will need to verify that your license is Stack Enabled and you have the Stacks Configuration details in-hand (consists of an IP address and a port). 
+In order to successfully complete the deployment of Nanome’s starter stack group of plugins, you will need to verify that your license is Stack Enabled and you have the Stacks Configuration details in-hand (consists of an IP address and a port).
 
-For Non-Enterprise Customers, please verify that your Nanome Licenses are *Stacks Enabled* with your Nanome representative.
+For Non-Enterprise Customers, please verify that your Nanome Licenses are _Stacks Enabled_ with your Nanome representative.
 
 As of March 17, 2020 - the plugins a part of the Starter Stack are:
 
@@ -35,7 +35,6 @@ Configure the security groups to allow the following traffic:
 SSH Port 22
 HTTP Port 80
 
-
 ### Step 2: SSH into the VM + Install Git & Docker
 
 SSH into the VM using the IP address and the user
@@ -54,7 +53,7 @@ sudo service docker start
 git clone https://github.com/nanome-ai/plugin-deployer
 cd plugin-deployer
 
-sudo ./deploy.sh -a <your Nanome Stacks Config IP> -p <your Nanome Stacks Config port> --plugin plugin-vault -w 80 -u <Your VM Host IP>
+sudo ./deploy.sh -a <your Nanome Stacks Config IP> -p <your Nanome Stacks Config port> --plugin vault -w 80 -u <your VM Host IP>
 ```
 
 *Where the Nanome Vault webUI (-w) is web interface port 80, and (-u) specifies the IP address of your current VM.
