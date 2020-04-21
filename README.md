@@ -4,7 +4,7 @@ A quick script to deploy the Nanome plugin starter pack
 
 ## Nanome Plugin Starter Pack Deployment Instructions
 
-In order to successfully complete the deployment of Nanome's starter pack group of plugins, you will need to verify that you have a Plugin Server (NTS) already installed on a separate VM for your organization and that you have the IP address handy (aka NTS IP).
+In order to successfully complete the deployment of Nanome’s starter pack group of plugins, you will need to verify that your license is Stack Enabled and you have the Stack Configuration details in-hand (consists of an IP address and a port). 
 
 For Non-Enterprise Customers, please verify that your Nanome Licenses are Plugin Enabled with your Nanome representative.
 
@@ -46,7 +46,8 @@ sudo service docker start
 ```sh
 git clone https://github.com/nanome-ai/plugin-deployer
 cd plugin-deployer
-./deploy.sh -a <NTS IP> --plugin plugin-vault -w 8080 -u <HOST IP>:8080
+
+sudo ./deploy.sh -a <your Nanome Stack Config IP> -p <your Nanome Stack Config port>
 ```
 
 NOTE: to add arguments specific to a plugin, append any number of `--plugin <plugin-name> [args]` to the `./deploy.sh` command.
