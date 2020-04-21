@@ -33,7 +33,6 @@ Security Groups:
 
 Configure the security groups to allow the following traffic:
 SSH Port 22
-Custom TCP 8888
 HTTP Port 80
 
 
