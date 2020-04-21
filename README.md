@@ -1,14 +1,14 @@
-# Auto Deploy the Nanome Plugin Starter Pack
+# Auto Deploy the Nanome Starter Stack
 
-A quick script to deploy the Nanome plugin starter pack
+A quick script to deploy the  Nanome Starter Stack
 
-## Nanome Plugin Starter Pack Deployment Instructions
+## Nanome Starter Stack Deployment Instructions
 
-In order to successfully complete the deployment of Nanome’s starter pack group of plugins, you will need to verify that your license is Stack Enabled and you have the Stack Configuration details in-hand (consists of an IP address and a port). 
+In order to successfully complete the deployment of Nanome’s starter stack group of plugins, you will need to verify that your license is Stack Enabled and you have the Stacks Configuration details in-hand (consists of an IP address and a port). 
 
-For Non-Enterprise Customers, please verify that your Nanome Licenses are Plugin Enabled with your Nanome representative.
+For Non-Enterprise Customers, please verify that your Nanome Licenses are *Stacks Enabled* with your Nanome representative.
 
-As of March 17, 2020 - the plugins a part of the starter pack are:
+As of March 17, 2020 - the plugins a part of the Starter Stack are:
 
 - Chemical Properties - cheminformatics calculation using RDKit
 - Docking - using Smina software
@@ -17,7 +17,7 @@ As of March 17, 2020 - the plugins a part of the starter pack are:
 - Structure Prep - re-calculate bonds and ribbons for Quest users
 - Vault - web-based file management (perfect for Quest)
 
-### Step 1: Provisioning the Dedicated Plugins Virtual Machine
+### Step 1: Provisioning the Dedicated Stack/Plugins Virtual Machine
 
 Specifications:
 Amazon AWS T2.medium EC2 Linux machine with 30 GB of disk storage or equivalent
@@ -41,7 +41,7 @@ sudo yum install docker
 sudo service docker start
 ```
 
-### Step 3: Pull the plugin starter pack auto-deploy script and run it
+### Step 3: Pull the Nanome Starter Stack auto-deploy script and run it
 
 ```sh
 git clone https://github.com/nanome-ai/plugin-deployer
@@ -66,4 +66,4 @@ This should list out the plugins that are currently running. Please verify that 
 
 Go ahead and log onto the VR client computer and launch Nanome
 
-\*Note the VR Client computer and the dedicated Plugins VM need to be a part of the same IT firewall network
+\*Note the VR Client computer and the dedicated Stacks/Plugins VM need to be a part of the same IT firewall network
