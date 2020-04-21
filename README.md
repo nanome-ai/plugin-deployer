@@ -47,7 +47,7 @@ sudo service docker start
 git clone https://github.com/nanome-ai/plugin-deployer
 cd plugin-deployer
 
-sudo ./deploy.sh -a <your Nanome Stack Config IP> -p <your Nanome Stack Config port>
+sudo ./deploy.sh -a <your Nanome Stacks Config IP> -p <your Nanome Stacks Config port>
 ```
 
 NOTE: to add arguments specific to a plugin, append any number of `--plugin <plugin-name> [args]` to the `./deploy.sh` command.
