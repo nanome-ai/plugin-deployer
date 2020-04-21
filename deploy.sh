@@ -12,6 +12,7 @@ plugins=(
     "vault"
 )
 plugin_args=()
+keyfile=""
 github_url="https://github.com/nanome-ai/plugin-"
 
 usage() {
@@ -27,6 +28,9 @@ $0 [options]
 
     -p <port> or --port <port>
         NTS port plugins connect to
+
+    -k <file> or --key <file>
+        Key file for plugins to use when connecting to NTS
 
     -d <directory> or --directory <directory>
         Directory containing plugins
@@ -81,6 +85,11 @@ while [ $# -gt 0 ]; do
             shift
             args+=("-p" $1)
             ;;
+        -k | --key )
+            shift
+            args+=("-k" `basename $1`)
+            keyfile="$1"
+            ;;
         -d | --directory )
             shift
             directory=$1
@@ -129,6 +138,11 @@ for plugin in "${plugins[@]}"; do (
         git clone -q "$github_url$plugin" $plugin
         echo "done"
     fi
+
+    if [ -n "$keyfile" ]; then
+        cp "$keyfile" "$plugin/`basename $keyfile`"
+    fi
+
 
     cd $plugin
     echo -n "  pulling... "
