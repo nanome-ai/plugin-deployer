@@ -130,6 +130,7 @@ fi
 mkdir -p logs
 logs=`(cd logs; pwd)`
 
+docker pull nanome/nanobabel >/dev/null
 cd $directory
 for plugin in "${plugins[@]}"; do (
     echo -e "\n$plugin"
