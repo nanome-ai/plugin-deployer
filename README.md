@@ -1,8 +1,8 @@
-# Auto Deploy the Nanome Starter Stack
+# Stack Auto-Deploy [WIP]
 
-A quick script to deploy the Nanome Starter Stack
+A quick and easy configurable script to deploy several Nanome Stacks (Plugins) at a time.
 
-## Nanome Starter Stack Deployment Instructions
+## Configuration Instructions
 
 In order to successfully complete the deployment of Nanome’s starter stack group of plugins, you will need to verify that your license is Stack Enabled and you have the Stacks Configuration details in-hand (consists of an IP address and a port).
 
